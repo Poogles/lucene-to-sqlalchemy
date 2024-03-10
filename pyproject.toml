@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "lucene-to-sqlalchemy-parser"
+version = "0.1.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = ">=3.11.0, <=3.12.0"
+SQLAlchemy = "2.0.23"
+
+[tool.poetry.dev-dependencies]
+autoflake = "1.4"
+black = "22.3.0"
+flake8 = "3.9.2"
+isort = "5.9.3"
+mypy = "0.910"
+pytest = "6.2.5"
+pytest-random-order = "1.1.0"
+
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+addopts = ["--random-order"]
+filterwarnings = [
+    # ignore sqlalchemy being unable to reflect indexes (they'ren in the DB so who cares).
+    "ignore:Skipped unsupported reflection.*:sqlalchemy.exc.SAWarning",
+]
